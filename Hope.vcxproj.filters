@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="_Input\_\Hope.hpp" />
+    <ClInclude Include="_Input\_\Hope\Audio.hpp">
+      <Filter>Hope</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Debug.hpp">
+      <Filter>Hope</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Interface.hpp">
+      <Filter>Hope</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Keyboard.hpp">
+      <Filter>Hope</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Mouse.hpp">
+      <Filter>Hope</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Space.hpp">
+      <Filter>Hope</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Time.hpp">
+      <Filter>Hope</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Video.hpp">
+      <Filter>Hope</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Audio\Sound.hpp">
+      <Filter>Hope\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Audio\Track.hpp">
+      <Filter>Hope\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Video\Font.hpp">
+      <Filter>Hope\Video</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Video\Image.hpp">
+      <Filter>Hope\Video</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Video\Sprite.hpp">
+      <Filter>Hope\Video</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Space\Entity.hpp">
+      <Filter>Hope\Space</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Mouse\Button.hpp">
+      <Filter>Hope\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Mouse\Coordinate.hpp">
+      <Filter>Hope\Mouse</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="_Input\_\Hope.cpp" />
+    <ClCompile Include="_Input\_\Hope\Audio.cpp">
+      <Filter>Hope</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Debug.cpp">
+      <Filter>Hope</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Interface.cpp">
+      <Filter>Hope</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Keyboard.cpp">
+      <Filter>Hope</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Mouse.cpp">
+      <Filter>Hope</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Space.cpp">
+      <Filter>Hope</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Time.cpp">
+      <Filter>Hope</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Video.cpp">
+      <Filter>Hope</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Audio\Sound.cpp">
+      <Filter>Hope\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Audio\Track.cpp">
+      <Filter>Hope\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Video\Font.cpp">
+      <Filter>Hope\Video</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Video\Image.cpp">
+      <Filter>Hope\Video</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Video\Sprite.cpp">
+      <Filter>Hope\Video</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Space\Entity.cpp">
+      <Filter>Hope\Space</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Mouse\Button.cpp">
+      <Filter>Hope\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Mouse\Coordinate.cpp">
+      <Filter>Hope\Mouse</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Hope">
+      <UniqueIdentifier>{eb6a0017-5670-4b3c-b279-e256312b3432}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hope\Audio">
+      <UniqueIdentifier>{21b6f5a1-1e17-4764-b5ec-6e4f6dc4f843}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hope\Space">
+      <UniqueIdentifier>{8da8d131-199a-44ea-8a0d-d36383f72ecd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hope\Video">
+      <UniqueIdentifier>{98f1907e-207b-4f10-9e35-54573adf1f6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hope\Mouse">
+      <UniqueIdentifier>{e6922db7-0120-4d7d-92df-8c3d191ea85f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
