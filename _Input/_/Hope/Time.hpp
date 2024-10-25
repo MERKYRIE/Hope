@@ -1,6 +1,6 @@
 #pragma once
 
-namespace NHope::NTime
+namespace NHope
 {
     inline struct STime
     {

@@ -1,6 +1,6 @@
 #include"Hope.hpp"
 
-namespace NHope::NInterface
+namespace NHope
 {
     SInterface::SInterface()
     {

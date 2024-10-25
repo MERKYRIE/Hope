@@ -1,40 +1,54 @@
 #include"Hope.hpp"
 
+#include"Cursor.hpp"
+
 #include"Button.hpp"
 
-namespace NHope::NMouse::NButton
+namespace NHope::NMouse
 {
     SButton::SButton()
     {
-        FStates["Pressed"] = false;
-        FStates["Held"] = false;
-        FStates["Released"] = false;
+        FModification = false;
+        FState = "Up";
+        FPressed = std::make_shared<SCursor>();
+        FReleased = std::make_shared<SCursor>();
+        FHeld = std::make_shared<SCursor>();
     }
 
-    std::unordered_map<std::string , bool> const& SButton::IStates()
+    SButton* SButton::IPreupdate()
     {
-        return(FStates);
-    }
-
-    SButton* SButton::IStates(std::unordered_map<std::string , bool> const& AValue)
-    {
-        FStates = AValue;
+        FModification = false;
+        FPressed->IPreupdate();
+        FReleased->IPreupdate();
+        FHeld->IPreupdate();
+        if(FState == "Pressed")
+        {
+            FState = "Down";
+            return(this);
+        }
+        if(FState == "Released")
+        {
+            FState = "Up";
+            return(this);
+        }
         return(this);
     }
-
-    SButton* SButton::IUpdate(SDL_Event const& AEvent)
+    
+    SButton* SButton::IPostupdate(SDL_Event const& AEvent)
     {
+        FModification = true;
         switch(AEvent.type)
         {
             case(SDL_MOUSEBUTTONDOWN):
-                FStates["Pressed"] = true;
-                FStates["Held"] = true;
-                FStates["Released"] = false;
+                FState = "Pressed";
+                FPressed->IPostupdate(AEvent.motion);
             break;
             case(SDL_MOUSEBUTTONUP):
-                FStates["Pressed"] = false;
-                FStates["Held"] = false;
-                FStates["Released"] = true;
+                FState = "Released";
+                FReleased->IPostupdate(AEvent.motion);
+            break;
+            case(SDL_MOUSEMOTION):
+                FHeld->IPostupdate(AEvent.motion);
             break;
         }
         return(this);

@@ -1,6 +1,6 @@
 #pragma once
 
-namespace NHope::NDebug
+namespace NHope
 {
     inline struct SDebug
     {

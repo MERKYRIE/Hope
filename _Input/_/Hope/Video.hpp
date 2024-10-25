@@ -1,22 +1,14 @@
 #pragma once
 
-namespace NHope::NVideo
+namespace NHope
 {
-    namespace NFont
+    namespace NVideo
     {
         struct SFont;
-    }
-
-    namespace NImage
-    {
         struct SImage;
-    }
-
-    namespace NSprite
-    {
         struct SSprite;
     }
-    
+
     inline struct SVideo
     {
         SDL_Window* FWindow;
@@ -27,8 +19,8 @@ namespace NHope::NVideo
         std::int32_t FMaximum;
         double FRatio;
         double FRatioInversed;
-        std::vector<std::shared_ptr<NFont::SFont>> FFonts;
-        std::vector<std::shared_ptr<NImage::SImage>> FImages;
+        std::vector<std::shared_ptr<NVideo::SFont>> FFonts;
+        std::vector<std::shared_ptr<NVideo::SImage>> FImages;
 
         SVideo();
         void IPreupdate();
@@ -40,8 +32,8 @@ namespace NHope::NVideo
         std::int32_t const& IMaximum();
         double const& IRatio();
         double const& IRatioInversed();
-        std::vector<std::shared_ptr<NFont::SFont>> const& IFonts();
-        std::vector<std::shared_ptr<NImage::SImage>> const& IImages();
+        std::vector<std::shared_ptr<NVideo::SFont>> const& IFonts();
+        std::vector<std::shared_ptr<NVideo::SImage>> const& IImages();
         void IWindow(SDL_Window* const& AValue);
         void IRenderer(SDL_Renderer* const& AValue);
         void IWidth(std::int32_t const& AValue);
@@ -50,11 +42,11 @@ namespace NHope::NVideo
         void IMaximum(std::int32_t const& AValue);
         void IRatio(double const& AValue);
         void IRatioInversed(double const& AValue);
-        void IFonts(std::vector<std::shared_ptr<NFont::SFont>> const& AValue);
-        void IImages(std::vector<std::shared_ptr<NImage::SImage>> const& AValue);
-        NFont::SFont* IAccessFont(const std::string& APath);
-        NImage::SImage* IAccessImageSpecific(const std::string& APath);
-        NImage::SImage* IAccessImageRandom();
+        void IFonts(std::vector<std::shared_ptr<NVideo::SFont>> const& AValue);
+        void IImages(std::vector<std::shared_ptr<NVideo::SImage>> const& AValue);
+        NVideo::SFont* IAccessFont(const std::string& APath);
+        NVideo::SImage* IAccessImageSpecific(const std::string& APath);
+        NVideo::SImage* IAccessImageRandom();
         double IConvertFromPixelToRectangleHorizontal(std::int32_t APixel);
         double IConvertFromPixelToRectangleVertical(std::int32_t APixel);
         double IConvertFromPixelToSquare(std::int32_t APixel);

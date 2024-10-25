@@ -1,12 +1,19 @@
 #include"Hope.hpp"
 
+#include"Mouse/Absolute.hpp"
+#include"Mouse/Button.hpp"
+#include"Mouse/Cursor.hpp"
+#include"Mouse/Pixel.hpp"
+#include"Mouse/Relative.hpp"
+#include"Mouse/Square.hpp"
+#include"Mouse/Wheel.hpp"
 #include"Video/Font.hpp"
 #include"Video/Image.hpp"
 #include"Video/Sprite.hpp"
 
 #include"Space/Entity.hpp"
 
-namespace NHope::NSpace
+namespace NHope
 {
     SSpace::SSpace()
     {
@@ -34,40 +41,42 @@ namespace NHope::NSpace
             FMatrix[FIterationX].resize(FHeight);
             for(FIterationY = 0 ; FIterationY < FHeight ; FIterationY++)
             {
-                FMatrix[FIterationX][FIterationY].FGround = std::make_shared<NVideo::NSprite::SSprite>();
-                FMatrix[FIterationX][FIterationY].FGround->ILoad(NVideo::GVideo.IAccessFont("/Consolas.ttf")->IAccessString("Dirt"));
+                FMatrix[FIterationX][FIterationY].FGround = std::make_shared<NVideo::SSprite>();
+                FMatrix[FIterationX][FIterationY].FGround->ILoad(GVideo.IAccessFont("/Consolas.ttf")->IString("Dirt"));
             }
             FMatrix[FIterationX].shrink_to_fit();
         }
         FMatrix.shrink_to_fit();
-        FMatrix[0][0].FEntity = std::make_shared<NEntity::SEntity>();
-        FMatrix[9][0].FGround->ILoad(NVideo::GVideo.IAccessFont("/Consolas.ttf")->IAccessString("Food"));
-        FMatrix[0][9].FGround->ILoad(NVideo::GVideo.IAccessFont("/Consolas.ttf")->IAccessString("Water"));
+        FMatrix[0][0].FEntity = std::make_shared<NSpace::SEntity>();
+        FMatrix[9][0].FGround->ILoad(GVideo.IAccessFont("/Consolas.ttf")->IString("Food"));
+        FMatrix[0][9].FGround->ILoad(GVideo.IAccessFont("/Consolas.ttf")->IString("Water"));
     }
 
     void SSpace::IPreupdate()
     {
         FScaleLastX = FScaleX;
         FScaleLastY = FScaleY;
-        FScaleX = std::clamp(FScaleX * std::pow(FScalingX , NMouse::GMouse.IWheelState()) , FScaleXMinimum , FScaleXMaximum);
-        FScaleY = std::clamp(FScaleY * std::pow(FScalingY , NMouse::GMouse.IWheelState()) , FScaleYMinimum , FScaleYMaximum);
-        FX -= FSpeedX * NMouse::GMouse.IXsHeldRelative()[SDL_BUTTON_MIDDLE] / FScaleLastX - (FScaleLastX != FScaleX) * NMouse::GMouse.IWheelState() * NMouse::GMouse.IAbsoluteXSquare() / std::max(FScaleLastX , FScaleX);
-        FY -= FSpeedY * NMouse::GMouse.IYsHeldRelative()[SDL_BUTTON_MIDDLE] / FScaleLastY - (FScaleLastY != FScaleY) * NMouse::GMouse.IWheelState() * NMouse::GMouse.IAbsoluteYSquare() / std::max(FScaleLastY , FScaleY);
+        FScaleX = std::clamp(FScaleX * std::pow(FScalingX , GMouse.FWheel->FState) , FScaleXMinimum , FScaleXMaximum);
+        FScaleY = std::clamp(FScaleY * std::pow(FScalingY , GMouse.FWheel->FState) , FScaleYMinimum , FScaleYMaximum);
+        FX -= FSpeedX * GMouse.FButtons["Middle"]->FHeld->FRelative->FPixel->FX / FScaleLastX - (FScaleLastX != FScaleX) * GMouse.FWheel->FState * GMouse.FCursor->FAbsolute->FSquare->FX / std::max(FScaleLastX , FScaleX);
+        FY -= FSpeedY * GMouse.FButtons["Middle"]->FHeld->FRelative->FPixel->FY / FScaleLastY - (FScaleLastY != FScaleY) * GMouse.FWheel->FState * GMouse.FCursor->FAbsolute->FSquare->FY / std::max(FScaleLastY , FScaleY);
         for(FIterationX = 0 ; FIterationX < FWidth ; FIterationX++)
         {
             for(FIterationY = 0 ; FIterationY < FHeight ; FIterationY++)
             {
-                FMatrix[FIterationX][FIterationY].FGround
-                ->IAccessDestinationXSquareAbsolute(FScaleX * (-FX + FIterationX))->IAccessDestinationYSquareAbsolute(FScaleY * (-FY + FIterationY))
-                ->IAccessDestinationWidthSquareAbsolute(FScaleX)->IAccessDestinationHeightSquareAbsolute(FScaleY)
-                ->IDraw();
+                FMatrix[FIterationX][FIterationY].FGround->IAccessDestinationXSquareAbsolute(FScaleX * (-FX + FIterationX));
+                FMatrix[FIterationX][FIterationY].FGround->IAccessDestinationYSquareAbsolute(FScaleY * (-FY + FIterationY));
+                FMatrix[FIterationX][FIterationY].FGround->IAccessDestinationWidthSquareAbsolute(FScaleX);
+                FMatrix[FIterationX][FIterationY].FGround->IAccessDestinationHeightSquareAbsolute(FScaleY);
+                FMatrix[FIterationX][FIterationY].FGround->IDraw();
                 if(FMatrix[FIterationX][FIterationY].FEntity)
                 {
                     FMatrix[FIterationX][FIterationY].FEntity->IUpdate();
-                    FMatrix[FIterationX][FIterationY].FEntity->ISprite()
-                    ->IAccessDestinationXSquareAbsolute(FScaleX * (-FX + FIterationX))->IAccessDestinationYSquareAbsolute(FScaleY * (-FY + FIterationY))
-                    ->IAccessDestinationWidthSquareAbsolute(FScaleX)->IAccessDestinationHeightSquareAbsolute(FScaleY)
-                    ->IDraw();
+                    FMatrix[FIterationX][FIterationY].FEntity->FSprite->IAccessDestinationXSquareAbsolute(FScaleX * (-FX + FIterationX));
+                    FMatrix[FIterationX][FIterationY].FEntity->FSprite->IAccessDestinationYSquareAbsolute(FScaleY * (-FY + FIterationY));
+                    FMatrix[FIterationX][FIterationY].FEntity->FSprite->IAccessDestinationWidthSquareAbsolute(FScaleX);
+                    FMatrix[FIterationX][FIterationY].FEntity->FSprite->IAccessDestinationHeightSquareAbsolute(FScaleY);
+                    FMatrix[FIterationX][FIterationY].FEntity->FSprite->IDraw();
                 }
             }
         }
@@ -274,7 +283,7 @@ namespace NHope::NSpace
         {
             for(std::int64_t LY{0} ; LY < FHeight ; LY++)
             {
-                if(FMatrix[LX][LY].FGround->IImage()->IIs(AGround))
+                if(FMatrix[LX][LY].FGround->FImage->FPath == AGround)
                 {
                     if(std::abs(LX - FIterationX) <= 1 && std::abs(LY - FIterationY) <= 1)
                     {

@@ -3,7 +3,7 @@
 #include"Image.hpp"
 #include"Sprite.hpp"
 
-namespace NHope::NVideo::NSprite
+namespace NHope::NVideo
 {
     SSprite::SSprite()
     {
@@ -12,45 +12,11 @@ namespace NHope::NVideo::NSprite
         FDestination = {};
     }
 
-    NImage::SImage* const& SSprite::IImage()
-    {
-        return(FImage);
-    }
-
-    SDL_Rect const& SSprite::ISource()
-    {
-        return(FSource);
-    }
-
-    SDL_Rect const& SSprite::IDestination()
-    {
-        return(FDestination);
-    }
-
-    SSprite* SSprite::IImage(NImage::SImage* const& AImage)
+    void SSprite::ILoad(SImage* AImage)
     {
         FImage = AImage;
-        return(this);
-    }
-
-    SSprite* SSprite::ISource(SDL_Rect const& AValue)
-    {
-        FSource = AValue;
-        return(this);
-    }
-
-    SSprite* SSprite::IDestination(SDL_Rect const& AValue)
-    {
-        FDestination = AValue;
-        return(this);
-    }
-
-    SSprite* SSprite::ILoad(NImage::SImage* AImage)
-    {
-        FImage = AImage;
-        FSource.w = FImage->IAccessWidth();
-        FSource.h = FImage->IAccessHeight();
-        return(this);
+        FSource.w = FImage->IWidth();
+        FSource.h = FImage->IHeight();
     }
 
     std::int32_t SSprite::IAccessSourceX()
@@ -73,187 +39,163 @@ namespace NHope::NVideo::NSprite
         return(FSource.h);
     }
 
-    SSprite* SSprite::IAccessSourceXAbsolute(std::int32_t AX)
+    void SSprite::IAccessSourceXAbsolute(std::int32_t AX)
     {
         FSource.x = AX;
-        return(this);
     }
 
-    SSprite* SSprite::IAccessSourceYAbsolute(std::int32_t AY)
+    void SSprite::IAccessSourceYAbsolute(std::int32_t AY)
     {
         FSource.y = AY;
-        return(this);
     }
 
-    SSprite* SSprite::IAccessSourceWidthAbsolute(std::int32_t AWidth)
+    void SSprite::IAccessSourceWidthAbsolute(std::int32_t AWidth)
     {
         FSource.w = AWidth;
-        return(this);
     }
 
-    SSprite* SSprite::IAccessSourceHeightAbsolute(std::int32_t AHeight)
+    void SSprite::IAccessSourceHeightAbsolute(std::int32_t AHeight)
     {
         FSource.h = AHeight;
-        return(this);
     }
 
-    SSprite* SSprite::IAccessSourceXRelative(std::int32_t AX)
+    void SSprite::IAccessSourceXRelative(std::int32_t AX)
     {
         FSource.x += AX;
-        return(this);
     }
 
-    SSprite* SSprite::IAccessSourceYRelative(std::int32_t AY)
+    void SSprite::IAccessSourceYRelative(std::int32_t AY)
     {
         FSource.y += AY;
-        return(this);
     }
 
-    SSprite* SSprite::IAccessSourceWidthRelative(std::int32_t AWidth)
+    void SSprite::IAccessSourceWidthRelative(std::int32_t AWidth)
     {
         FSource.w += AWidth;
-        return(this);
     }
 
-    SSprite* SSprite::IAccessSourceHeightRelative(std::int32_t AHeight)
+    void SSprite::IAccessSourceHeightRelative(std::int32_t AHeight)
     {
         FSource.h += AHeight;
-        return(this);
     }
 
     double SSprite::IAccessSourceXRectangle()
     {
-        return(static_cast<double>(FSource.x) / static_cast<double>(FImage->IAccessWidth()));
+        return(static_cast<double>(FSource.x) / static_cast<double>(FImage->IWidth()));
     }
 
     double SSprite::IAccessSourceYRectangle()
     {
-        return(static_cast<double>(FSource.y) / static_cast<double>(FImage->IAccessHeight()));
+        return(static_cast<double>(FSource.y) / static_cast<double>(FImage->IHeight()));
     }
 
     double SSprite::IAccessSourceWidthRectangle()
     {
-        return(static_cast<double>(FSource.w) / static_cast<double>(FImage->IAccessWidth()));
+        return(static_cast<double>(FSource.w) / static_cast<double>(FImage->IWidth()));
     }
 
     double SSprite::IAccessSourceHeightRectangle()
     {
-        return(static_cast<double>(FSource.h) / static_cast<double>(FImage->IAccessHeight()));
+        return(static_cast<double>(FSource.h) / static_cast<double>(FImage->IHeight()));
     }
 
-    SSprite* SSprite::IAccessSourceXRectangleAbsolute(double AX)
+    void SSprite::IAccessSourceXRectangleAbsolute(double AX)
     {
-        FSource.x = static_cast<std::int32_t>(FImage->IAccessWidth() * AX);
-        return(this);
+        FSource.x = static_cast<std::int32_t>(FImage->IWidth() * AX);
     }
 
-    SSprite* SSprite::IAccessSourceYRectangleAbsolute(double AY)
+    void SSprite::IAccessSourceYRectangleAbsolute(double AY)
     {
-        FSource.y = static_cast<std::int32_t>(FImage->IAccessHeight() * AY);
-        return(this);
+        FSource.y = static_cast<std::int32_t>(FImage->IHeight() * AY);
     }
 
-    SSprite* SSprite::IAccessSourceWidthRectangleAbsolute(double AWidth)
+    void SSprite::IAccessSourceWidthRectangleAbsolute(double AWidth)
     {
-        FSource.w = static_cast<std::int32_t>(FImage->IAccessWidth() * AWidth);
-        return(this);
+        FSource.w = static_cast<std::int32_t>(FImage->IWidth() * AWidth);
     }
 
-    SSprite* SSprite::IAccessSourceHeightRectangleAbsolute(double AHeight)
+    void SSprite::IAccessSourceHeightRectangleAbsolute(double AHeight)
     {
-        FSource.h = static_cast<std::int32_t>(FImage->IAccessHeight() * AHeight);
-        return(this);
+        FSource.h = static_cast<std::int32_t>(FImage->IHeight() * AHeight);
     }
 
-    SSprite* SSprite::IAccessSourceXRectangleRelative(double AX)
+    void SSprite::IAccessSourceXRectangleRelative(double AX)
     {
-        FSource.x += static_cast<std::int32_t>(FImage->IAccessWidth() * AX);
-        return(this);
+        FSource.x += static_cast<std::int32_t>(FImage->IWidth() * AX);
     }
 
-    SSprite* SSprite::IAccessSourceYRectangleRelative(double AY)
+    void SSprite::IAccessSourceYRectangleRelative(double AY)
     {
-        FSource.y += static_cast<std::int32_t>(FImage->IAccessHeight() * AY);
-        return(this);
+        FSource.y += static_cast<std::int32_t>(FImage->IHeight() * AY);
     }
 
-    SSprite* SSprite::IAccessSourceWidthRectangleRelative(double AWidth)
+    void SSprite::IAccessSourceWidthRectangleRelative(double AWidth)
     {
-        FSource.w += static_cast<std::int32_t>(FImage->IAccessWidth() * AWidth);
-        return(this);
+        FSource.w += static_cast<std::int32_t>(FImage->IWidth() * AWidth);
     }
 
-    SSprite* SSprite::IAccessSourceHeightRectangleRelative(double AHeight)
+    void SSprite::IAccessSourceHeightRectangleRelative(double AHeight)
     {
-        FSource.h += static_cast<std::int32_t>(FImage->IAccessHeight() * AHeight);
-        return(this);
+        FSource.h += static_cast<std::int32_t>(FImage->IHeight() * AHeight);
     }
 
     double SSprite::IAccessSourceXSquare()
     {
-        return(static_cast<double>(FSource.x) / static_cast<double>(FImage->IAccessMinimum()));
+        return(static_cast<double>(FSource.x) / static_cast<double>(FImage->IMinimum()));
     }
 
     double SSprite::IAccessSourceYSquare()
     {
-        return(static_cast<double>(FSource.y) / static_cast<double>(FImage->IAccessMinimum()));
+        return(static_cast<double>(FSource.y) / static_cast<double>(FImage->IMinimum()));
     }
 
     double SSprite::IAccessSourceWidthSquare()
     {
-        return(static_cast<double>(FSource.w) / static_cast<double>(FImage->IAccessMinimum()));
+        return(static_cast<double>(FSource.w) / static_cast<double>(FImage->IMinimum()));
     }
 
     double SSprite::IAccessSourceHeightSquare()
     {
-        return(static_cast<double>(FSource.h) / static_cast<double>(FImage->IAccessMinimum()));
+        return(static_cast<double>(FSource.h) / static_cast<double>(FImage->IMinimum()));
     }
 
-    SSprite* SSprite::IAccessSourceXSquareAbsolute(double AX)
+    void SSprite::IAccessSourceXSquareAbsolute(double AX)
     {
-        FSource.x = static_cast<std::int32_t>(FImage->IAccessMinimum() * AX);
-        return(this);
+        FSource.x = static_cast<std::int32_t>(FImage->IMinimum() * AX);
     }
 
-    SSprite* SSprite::IAccessSourceYSquareAbsolute(double AY)
+    void SSprite::IAccessSourceYSquareAbsolute(double AY)
     {
-        FSource.y = static_cast<std::int32_t>(FImage->IAccessMinimum() * AY);
-        return(this);
+        FSource.y = static_cast<std::int32_t>(FImage->IMinimum() * AY);
     }
 
-    SSprite* SSprite::IAccessSourceWidthSquareAbsolute(double AWidth)
+    void SSprite::IAccessSourceWidthSquareAbsolute(double AWidth)
     {
-        FSource.w = static_cast<std::int32_t>(FImage->IAccessMinimum() * AWidth);
-        return(this);
+        FSource.w = static_cast<std::int32_t>(FImage->IMinimum() * AWidth);
     }
 
-    SSprite* SSprite::IAccessSourceHeightSquareAbsolute(double AHeight)
+    void SSprite::IAccessSourceHeightSquareAbsolute(double AHeight)
     {
-        FSource.h = static_cast<std::int32_t>(FImage->IAccessMinimum() * AHeight);
-        return(this);
+        FSource.h = static_cast<std::int32_t>(FImage->IMinimum() * AHeight);
     }
 
-    SSprite* SSprite::IAccessSourceXSquareRelative(double AX)
+    void SSprite::IAccessSourceXSquareRelative(double AX)
     {
-        FSource.x += static_cast<std::int32_t>(FImage->IAccessMinimum() * AX);
-        return(this);
+        FSource.x += static_cast<std::int32_t>(FImage->IMinimum() * AX);
     }
 
-    SSprite* SSprite::IAccessSourceYSquareRelative(double AY)
+    void SSprite::IAccessSourceYSquareRelative(double AY)
     {
-        FSource.y += static_cast<std::int32_t>(FImage->IAccessMinimum() * AY);
-        return(this);
+        FSource.y += static_cast<std::int32_t>(FImage->IMinimum() * AY);
     }
 
-    SSprite* SSprite::IAccessSourceWidthSquareRelative(double AWidth)
+    void SSprite::IAccessSourceWidthSquareRelative(double AWidth)
     {
-        FSource.w += static_cast<std::int32_t>(FImage->IAccessMinimum() * AWidth);
-        return(this);
+        FSource.w += static_cast<std::int32_t>(FImage->IMinimum() * AWidth);
     }
-    SSprite* SSprite::IAccessSourceHeightSquareRelative(double AHeight)
+    void SSprite::IAccessSourceHeightSquareRelative(double AHeight)
     {
-        FSource.h += static_cast<std::int32_t>(FImage->IAccessMinimum() * AHeight);
-        return(this);
+        FSource.h += static_cast<std::int32_t>(FImage->IMinimum() * AHeight);
     }
 
     std::int32_t SSprite::IAccessDestinationX()
@@ -276,52 +218,44 @@ namespace NHope::NVideo::NSprite
         return(FDestination.h);
     }
 
-    SSprite* SSprite::IAccessDestinationXAbsolute(std::int32_t AX)
+    void SSprite::IAccessDestinationXAbsolute(std::int32_t AX)
     {
         FDestination.x = AX;
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationYAbsolute(std::int32_t AY)
+    void SSprite::IAccessDestinationYAbsolute(std::int32_t AY)
     {
         FDestination.y = AY;
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationWidthAbsolute(std::int32_t AWidth)
+    void SSprite::IAccessDestinationWidthAbsolute(std::int32_t AWidth)
     {
         FDestination.w = AWidth;
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationHeightAbsolute(std::int32_t AHeight)
+    void SSprite::IAccessDestinationHeightAbsolute(std::int32_t AHeight)
     {
         FDestination.h = AHeight;
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationXRelative(std::int32_t AX)
+    void SSprite::IAccessDestinationXRelative(std::int32_t AX)
     {
         FDestination.x += AX;
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationYRelative(std::int32_t AY)
+    void SSprite::IAccessDestinationYRelative(std::int32_t AY)
     {
         FDestination.y += AY;
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationWidthRelative(std::int32_t AWidth)
+    void SSprite::IAccessDestinationWidthRelative(std::int32_t AWidth)
     {
         FDestination.w += AWidth;
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationHeightRelative(std::int32_t AHeight)
+    void SSprite::IAccessDestinationHeightRelative(std::int32_t AHeight)
     {
         FDestination.h += AHeight;
-        return(this);
     }
 
     double SSprite::IAccessDestinationXRectangle()
@@ -344,52 +278,44 @@ namespace NHope::NVideo::NSprite
         return(GVideo.IConvertFromPixelToRectangleVertical(FDestination.h));
     }
 
-    SSprite* SSprite::IAccessDestinationXRectangleAbsolute(double AX)
+    void SSprite::IAccessDestinationXRectangleAbsolute(double AX)
     {
         FDestination.x = GVideo.IConvertFromRectangleToPixelHorizontal(AX);
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationYRectangleAbsolute(double AY)
+    void SSprite::IAccessDestinationYRectangleAbsolute(double AY)
     {
         FDestination.y = GVideo.IConvertFromRectangleToPixelVertical(AY);
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationWidthRectangleAbsolute(double AWidth)
+    void SSprite::IAccessDestinationWidthRectangleAbsolute(double AWidth)
     {
         FDestination.w = GVideo.IConvertFromRectangleToPixelHorizontal(AWidth);
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationHeightRectangleAbsolute(double AHeight)
+    void SSprite::IAccessDestinationHeightRectangleAbsolute(double AHeight)
     {
         FDestination.h = GVideo.IConvertFromRectangleToPixelVertical(AHeight);
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationXRectangleRelative(double AX)
+    void SSprite::IAccessDestinationXRectangleRelative(double AX)
     {
         FDestination.x += GVideo.IConvertFromRectangleToPixelHorizontal(AX);
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationYRectangleRelative(double AY)
+    void SSprite::IAccessDestinationYRectangleRelative(double AY)
     {
         FDestination.y += GVideo.IConvertFromRectangleToPixelVertical(AY);
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationWidthRectangleRelative(double AWidth)
+    void SSprite::IAccessDestinationWidthRectangleRelative(double AWidth)
     {
         FDestination.w += GVideo.IConvertFromRectangleToPixelHorizontal(AWidth);
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationHeightRectangleRelative(double AHeight)
+    void SSprite::IAccessDestinationHeightRectangleRelative(double AHeight)
     {
         FDestination.h += GVideo.IConvertFromRectangleToPixelVertical(AHeight);
-        return(this);
     }
 
     double SSprite::IAccessDestinationXSquare()
@@ -412,57 +338,48 @@ namespace NHope::NVideo::NSprite
         return(GVideo.IConvertFromPixelToSquare(FDestination.h));
     }
 
-    SSprite* SSprite::IAccessDestinationXSquareAbsolute(double AX)
+    void SSprite::IAccessDestinationXSquareAbsolute(double AX)
     {
         FDestination.x = GVideo.IConvertFromSquareToPixel(AX);
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationYSquareAbsolute(double AY)
+    void SSprite::IAccessDestinationYSquareAbsolute(double AY)
     {
         FDestination.y = GVideo.IConvertFromSquareToPixel(AY);
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationWidthSquareAbsolute(double AWidth)
+    void SSprite::IAccessDestinationWidthSquareAbsolute(double AWidth)
     {
         FDestination.w = GVideo.IConvertFromSquareToPixel(AWidth);
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationHeightSquareAbsolute(double AHeight)
+    void SSprite::IAccessDestinationHeightSquareAbsolute(double AHeight)
     {
         FDestination.h = GVideo.IConvertFromSquareToPixel(AHeight);
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationXSquareRelative(double AX)
+    void SSprite::IAccessDestinationXSquareRelative(double AX)
     {
         FDestination.x += GVideo.IConvertFromSquareToPixel(AX);
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationYSquareRelative(double AY)
+    void SSprite::IAccessDestinationYSquareRelative(double AY)
     {
         FDestination.y += GVideo.IConvertFromSquareToPixel(AY);
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationWidthSquareRelative(double AWidth)
+    void SSprite::IAccessDestinationWidthSquareRelative(double AWidth)
     {
         FDestination.w += GVideo.IConvertFromSquareToPixel(AWidth);
-        return(this);
     }
 
-    SSprite* SSprite::IAccessDestinationHeightSquareRelative(double AHeight)
+    void SSprite::IAccessDestinationHeightSquareRelative(double AHeight)
     {
         FDestination.h += GVideo.IConvertFromSquareToPixel(AHeight);
-        return(this);
     }
 
-    SSprite* SSprite::IDraw()
+    void SSprite::IDraw()
     {
         FImage->IDraw(FSource , FDestination);
-        return(this);
     }
 }

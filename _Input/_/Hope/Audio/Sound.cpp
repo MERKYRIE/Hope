@@ -2,61 +2,22 @@
 
 #include"Sound.hpp"
 
-namespace NHope::NAudio::NSound
+namespace NHope::NAudio
 {
-    SSound::SSound(const std::string& APath)
+    SSound::SSound(std::string const& APath)
     {
         FPath = APath.substr(APath.find('/'));
-        NDebug::GDebug.ISimpleDirectMediaLayerHandleError(FHandle = Mix_LoadWAV(APath.c_str()));
+        GDebug.ISimpleDirectMediaLayerHandleError(FHandle = Mix_LoadWAV(APath.c_str()));
         FChannel = Mix_AllocateChannels(SDL_QUERY);
-        NDebug::GDebug.IError(Mix_AllocateChannels(Mix_AllocateChannels(SDL_QUERY) + 1) != FChannel + 1);
+        GDebug.IError(Mix_AllocateChannels(Mix_AllocateChannels(SDL_QUERY) + 1) != FChannel + 1);
     }
 
-    std::string const& SSound::IPath()
+    void SSound::IPlay()
     {
-        return(FPath);
+        GDebug.ISimpleDirectMediaLayerCodeError(Mix_PlayChannel(FChannel , FHandle , 0) != FChannel);
     }
 
-    Mix_Chunk* const& SSound::IHandle()
-    {
-        return(FHandle);
-    }
-
-    std::int32_t const& SSound::IChannel()
-    {
-        return(FChannel);
-    }
-
-    SSound* SSound::IPath(std::string const& AValue)
-    {
-        FPath = AValue;
-        return(this);
-    }
-
-    SSound* SSound::IHandle(Mix_Chunk* const& AValue)
-    {
-        FHandle = AValue;
-        return(this);
-    }
-
-    SSound* SSound::IChannel(std::int32_t const& AValue)
-    {
-        FChannel = AValue;
-        return(this);
-    }
-
-    bool SSound::IIs(const std::string& APath)
-    {
-        return(FPath == APath);
-    }
-
-    SSound* SSound::IPlay()
-    {
-        NDebug::GDebug.ISimpleDirectMediaLayerCodeError(Mix_PlayChannel(FChannel , FHandle , 0) != FChannel);
-        return(this);
-    }
-
-    bool SSound::IIsPlaying()
+    bool SSound::IState()
     {
         return(Mix_Playing(FChannel));
     }

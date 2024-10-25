@@ -1,16 +1,16 @@
 #pragma once
 
-namespace NHope::NSpace
+namespace NHope
 {
-    namespace NEntity
+    namespace NSpace
     {
         struct SEntity;
     }
     
     struct SPartition
     {
-        std::shared_ptr<NVideo::NSprite::SSprite> FGround;
-        std::shared_ptr<NEntity::SEntity> FEntity;
+        std::shared_ptr<NVideo::SSprite> FGround;
+        std::shared_ptr<NSpace::SEntity> FEntity;
     };
     
     inline struct SSpace

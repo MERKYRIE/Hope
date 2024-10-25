@@ -1,6 +1,6 @@
 #include"Hope.hpp"
 
-namespace NHope::NDebug
+namespace NHope
 {
     SDebug::SDebug()
     {

@@ -1,19 +1,18 @@
 #pragma once
 
-namespace NHope::NMouse::NButton
+namespace NHope::NMouse
 {
     struct SButton
     {
-        std::unordered_map<std::string , bool> FStates;
+        bool FModification;
+        std::string FState;
+        std::shared_ptr<SCursor> FPressed;
+        std::shared_ptr<SCursor> FReleased;
+        std::shared_ptr<SCursor> FHeld;
 
         SButton();
-
-        std::unordered_map<std::string , bool> const& IStates();
-
-        SButton* IStates(std::unordered_map<std::string , bool> const& AValue);
-
-        SButton* IUpdate(SDL_Event const& AEvent);
-
+        SButton* IPreupdate();
+        SButton* IPostupdate(SDL_Event const& AEvent);
         ~SButton();
     };
 }

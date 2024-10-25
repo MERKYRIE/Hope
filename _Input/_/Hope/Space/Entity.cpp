@@ -5,42 +5,31 @@
 
 #include"Entity.hpp"
 
-namespace NHope::NSpace::NEntity
+namespace NHope::NSpace
 {
     SEntity::SEntity()
     {
-        FSprite = std::make_shared<NVideo::NSprite::SSprite>();
-        FSprite->ILoad(NVideo::GVideo.IAccessFont("/Consolas.ttf")->IAccessString("Dwarf"));
+        FSprite = std::make_shared<NVideo::SSprite>();
+        FSprite->ILoad(GVideo.IAccessFont("/Consolas.ttf")->IString("Dwarf"));
         FTimer = 0.0;
         FTime = 0.5;
         FHunger = 0.0;
         FThirst = 0.0;
     }
-    
-    NVideo::NSprite::SSprite* SEntity::ISprite()
-    {
-        return(FSprite.get());
-    }
 
-    SEntity* SEntity::ISprite(NVideo::NSprite::SSprite* ASprite)
+    void SEntity::IUpdate()
     {
-        FSprite.reset(ASprite);
-        return(this);
-    }
-
-    SEntity* SEntity::IUpdate()
-    {
-        FHunger += NTime::GTime.ITimepointRelative() / 240'000.0;
+        FHunger += GTime.ITimepointRelative() / 240'000.0;
         if(FHunger >= 1.0)
         {
-            return(this);
+            return;
         }
-        FThirst += NTime::GTime.ITimepointRelative() / 60'000.0;
+        FThirst += GTime.ITimepointRelative() / 60'000.0;
         if(FThirst >= 1.0)
         {
-            return(this);
+            return;
         }
-        FTimer += NTime::GTime.ITimepointRelative() / 1000.0;
+        FTimer += GTime.ITimepointRelative() / 1000.0;
         if(FHunger >= 0.05 && FTimer >= FTime)
         {
             //if(GSpace->AMove("Food"))
@@ -59,6 +48,10 @@ namespace NHope::NSpace::NEntity
         {
             FTimer = 0.0;
         }
-        return(this);
+    }
+
+    SEntity::~SEntity()
+    {
+    
     }
 }

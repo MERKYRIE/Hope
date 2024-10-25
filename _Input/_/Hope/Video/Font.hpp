@@ -1,31 +1,20 @@
 #pragma once
 
-namespace NHope::NVideo::NFont
+namespace NHope::NVideo
 {
     struct SFont
     {       
         std::string FPath;
-        std::vector<std::shared_ptr<NImage::SImage>> FDigits;
-        std::vector<std::shared_ptr<NImage::SImage>> FUppercases;
-        std::vector<std::shared_ptr<NImage::SImage>> FLowercases;
-        std::vector<std::shared_ptr<NImage::SImage>> FStrings;
+        std::vector<std::shared_ptr<SImage>> FDigits;
+        std::vector<std::shared_ptr<SImage>> FUppercases;
+        std::vector<std::shared_ptr<SImage>> FLowercases;
+        std::vector<std::shared_ptr<SImage>> FStrings;
 
-        SFont(const std::string& APath);
-        std::string const& IPath();
-        std::vector<std::shared_ptr<NImage::SImage>> const& IDigits();
-        std::vector<std::shared_ptr<NImage::SImage>> const& IUppercases();
-        std::vector<std::shared_ptr<NImage::SImage>> const& ILowercases();
-        std::vector<std::shared_ptr<NImage::SImage>> const& IStrings();
-        SFont* IPath(std::string const& AValue);
-        SFont* IDigits(std::vector<std::shared_ptr<NImage::SImage>> const& AValue);
-        SFont* IUppercases(std::vector<std::shared_ptr<NImage::SImage>> const& AValue);
-        SFont* ILowercases(std::vector<std::shared_ptr<NImage::SImage>> const& AValue);
-        SFont* IStrings(std::vector<std::shared_ptr<NImage::SImage>> const& AValue);
-        bool IIs(const std::string& APath);
-        NImage::SImage* IAccessDigit(char ACode);
-        NImage::SImage* IAccessUppercase(char ACode);
-        NImage::SImage* IAccessLowercase(char ACode);
-        NImage::SImage* IAccessString(const std::string& AString);
+        SFont(std::string const& APath);
+        SImage* IDigit(char const& ACode);
+        SImage* IUppercase(char const& ACode);
+        SImage* ILowercase(char const& ACode);
+        SImage* IString(std::string const& AString);
         ~SFont();
     };
 }

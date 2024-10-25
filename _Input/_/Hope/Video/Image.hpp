@@ -1,24 +1,19 @@
 #pragma once
 
-namespace NHope::NVideo::NImage
+namespace NHope::NVideo
 {
     struct SImage
     {
         std::string FPath;
         SDL_Texture* FHandle;
 
-        SImage(const std::string& APath);
-        SImage(TTF_Font* AFont , const std::string& AString);
-        std::string const& IPath();
-        SDL_Texture* const& IHandle();
-        SImage* IPath(std::string const& AValue);
-        SImage* IHandle(SDL_Texture* const& AValue);
-        bool IIs(const std::string& APath);
-        std::int32_t IAccessWidth();
-        std::int32_t IAccessHeight();
-        std::int32_t IAccessMinimum();
-        std::int32_t IAccessMaximum();
-        SImage* IDraw(const SDL_Rect& ASource , const SDL_Rect& ADestination);
+        SImage(std::string const& APath);
+        SImage(TTF_Font* const& AFont , std::string const& AString);
+        std::int32_t IWidth();
+        std::int32_t IHeight();
+        std::int32_t IMinimum();
+        std::int32_t IMaximum();
+        void IDraw(SDL_Rect const& ASource , SDL_Rect const& ADestination);
         ~SImage();
     };
 }

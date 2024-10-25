@@ -1,6 +1,6 @@
 #pragma once
 
-namespace NHope::NInterface
+namespace NHope
 {
     inline struct SInterface
     {

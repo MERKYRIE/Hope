@@ -6,56 +6,58 @@
 
 #include"Hope.hpp"
 
+#include"Hope/Keyboard/Key.hpp"
+
 namespace NHope
 {
     SHope::SHope()
     {
-        NDebug::GDebug.ISimpleDirectMediaLayerCodeError(SDL_Init(SDL_INIT_EVERYTHING));
+        GDebug.ISimpleDirectMediaLayerCodeError(SDL_Init(SDL_INIT_EVERYTHING));
     }
 
     void SHope::IUpdate()
     {
-        while(!NKeyboard::GKeyboard.IIsKeyHeld(SDL_SCANCODE_ESCAPE))
+        while(GKeyboard.FKeys["Escape"]->FState == "Up")
         {
-            NAudio::GAudio.IPreupdate();
-            NDebug::GDebug.IPreupdate();
-            NKeyboard::GKeyboard.IPreupdate();
-            NMouse::GMouse.IPreupdate();
+            GAudio.IPreupdate();
+            GDebug.IPreupdate();
+            GKeyboard.IPreupdate();
+            GMouse.IPreupdate();
             SDL_Event LEvent;
             while(SDL_PollEvent(&LEvent))
             {
                 switch(LEvent.type)
                 {
                     case(SDL_KEYDOWN):
-                        NKeyboard::GKeyboard.IPostupdate(LEvent);
+                        GKeyboard.IPostupdate(LEvent);
                     break;
                     case(SDL_KEYUP):
-                        NKeyboard::GKeyboard.IPostupdate(LEvent);
+                        GKeyboard.IPostupdate(LEvent);
                     break;
                     case(SDL_MOUSEBUTTONDOWN):
-                        NMouse::GMouse.IPostupdate(LEvent);
+                        GMouse.IPostupdate(LEvent);
                     break;
                     case(SDL_MOUSEBUTTONUP):
-                        NMouse::GMouse.IPostupdate(LEvent);
+                        GMouse.IPostupdate(LEvent);
                     break;
                     case(SDL_MOUSEMOTION):
-                        NMouse::GMouse.IPostupdate(LEvent);
+                        GMouse.IPostupdate(LEvent);
                     break;
                     case(SDL_MOUSEWHEEL):
-                        NMouse::GMouse.IPostupdate(LEvent);
+                        GMouse.IPostupdate(LEvent);
                     break;
                 }
             }
-            NTime::GTime.IPreupdate();
-            NVideo::GVideo.IPreupdate();
-            NInterface::GInterface.IPreupdate();
-            NSpace::GSpace.IPreupdate();
-            NSpace::GSpace.IPostupdate();
-            NInterface::GInterface.IPostupdate();
-            NVideo::GVideo.IPostupdate();
-            NTime::GTime.IPostupdate();
-            NDebug::GDebug.IPostupdate();
-            NAudio::GAudio.IPostupdate();
+            GTime.IPreupdate();
+            GVideo.IPreupdate();
+            GInterface.IPreupdate();
+            GSpace.IPreupdate();
+            GSpace.IPostupdate();
+            GInterface.IPostupdate();
+            GVideo.IPostupdate();
+            GTime.IPostupdate();
+            GDebug.IPostupdate();
+            GAudio.IPostupdate();
         };
     }
 

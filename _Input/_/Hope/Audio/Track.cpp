@@ -2,70 +2,38 @@
 
 #include"Track.hpp"
 
-namespace NHope::NAudio::NTrack
+namespace NHope::NAudio
 {
-    STrack::STrack(const std::string& APath)
+    STrack::STrack(std::string const& APath)
     {
         FPath = APath.substr(APath.find('/'));
-        NDebug::GDebug.ISimpleDirectMediaLayerHandleError(FHandle = Mix_LoadMUS(APath.c_str()));
+        GDebug.ISimpleDirectMediaLayerHandleError(FHandle = Mix_LoadMUS(APath.c_str()));
     }
 
-    std::string const& STrack::IPath()
+    void STrack::IPlay()
     {
-        return(FPath);
+        GDebug.ISimpleDirectMediaLayerCodeError(Mix_PlayMusic(FHandle , 0));
     }
 
-    Mix_Music* const& STrack::IHandle()
-    {
-        return(FHandle);
-    }
-
-    STrack* STrack::IPath(std::string const& AValue)
-    {
-        FPath = AValue;
-        return(this);
-    }
-
-    STrack* STrack::IHandle(Mix_Music* const& AValue)
-    {
-        FHandle = AValue;
-        return(this);
-    }
-
-    bool STrack::IIs(const std::string& APath)
-    {
-        return(FPath == APath);
-    }
-
-    STrack* STrack::IPlay()
-    {
-        NDebug::GDebug.ISimpleDirectMediaLayerCodeError(Mix_PlayMusic(FHandle , 0));
-        return(this);
-    }
-
-    STrack* STrack::IPause()
+    void STrack::IPause()
     {
         Mix_PauseMusic();
-        return(this);
     }
 
-    STrack* STrack::IResume()
+    void STrack::IResume()
     {
         Mix_ResumeMusic();
-        return(this);
     }
 
-    STrack* STrack::IStop()
+    void STrack::IStop()
     {
         Mix_HaltMusic();
-        return(this);
     }
 
-    STrack* STrack::IAccessVolume(std::uint8_t AValue)
+    void STrack::IVolume(std::uint8_t const& ALevel)
     {
-        Mix_VolumeMusic(AValue);
-        NDebug::GDebug.IError(Mix_VolumeMusic(SDL_QUERY) != AValue);
-        return(this);
+        Mix_VolumeMusic(ALevel);
+        GDebug.IError(Mix_VolumeMusic(SDL_QUERY) != ALevel);
     }
 
     STrack::~STrack()

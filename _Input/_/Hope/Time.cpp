@@ -1,6 +1,6 @@
 #include"Hope.hpp"
 
-namespace NHope::NTime
+namespace NHope
 {
     STime::STime()
     {

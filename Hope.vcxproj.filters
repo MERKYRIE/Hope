@@ -47,8 +47,29 @@
     <ClInclude Include="_Input\_\Hope\Mouse\Button.hpp">
       <Filter>Hope\Mouse</Filter>
     </ClInclude>
-    <ClInclude Include="_Input\_\Hope\Mouse\Coordinate.hpp">
+    <ClInclude Include="_Input\_\Hope\Mouse\Cursor.hpp">
       <Filter>Hope\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Mouse\Absolute.hpp">
+      <Filter>Hope\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Mouse\Pixel.hpp">
+      <Filter>Hope\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Mouse\Relative.hpp">
+      <Filter>Hope\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Mouse\Rectangle.hpp">
+      <Filter>Hope\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Mouse\Square.hpp">
+      <Filter>Hope\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Mouse\Wheel.hpp">
+      <Filter>Hope\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="_Input\_\Hope\Keyboard\Key.hpp">
+      <Filter>Hope\Keyboard</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -98,8 +119,29 @@
     <ClCompile Include="_Input\_\Hope\Mouse\Button.cpp">
       <Filter>Hope\Mouse</Filter>
     </ClCompile>
-    <ClCompile Include="_Input\_\Hope\Mouse\Coordinate.cpp">
+    <ClCompile Include="_Input\_\Hope\Mouse\Cursor.cpp">
       <Filter>Hope\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Mouse\Absolute.cpp">
+      <Filter>Hope\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Mouse\Pixel.cpp">
+      <Filter>Hope\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Mouse\Relative.cpp">
+      <Filter>Hope\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Mouse\Rectangle.cpp">
+      <Filter>Hope\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Mouse\Square.cpp">
+      <Filter>Hope\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Mouse\Wheel.cpp">
+      <Filter>Hope\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="_Input\_\Hope\Keyboard\Key.cpp">
+      <Filter>Hope\Keyboard</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +159,9 @@
     </Filter>
     <Filter Include="Hope\Mouse">
       <UniqueIdentifier>{e6922db7-0120-4d7d-92df-8c3d191ea85f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hope\Keyboard">
+      <UniqueIdentifier>{b4b63219-d7f8-4f2e-b901-3f5b0a4258b0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

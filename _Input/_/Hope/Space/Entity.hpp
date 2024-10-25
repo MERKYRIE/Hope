@@ -1,18 +1,17 @@
 #pragma once
 
-namespace NHope::NSpace::NEntity
+namespace NHope::NSpace
 {
     struct SEntity
     {
-        std::shared_ptr<NVideo::NSprite::SSprite> FSprite;
+        std::shared_ptr<NVideo::SSprite> FSprite;
         double FTimer;
         double FTime;
         double FHunger;
         double FThirst;
 
         SEntity();
-        NVideo::NSprite::SSprite* ISprite();
-        SEntity* ISprite(NVideo::NSprite::SSprite* ASprite);
-        SEntity* IUpdate();
+        void IUpdate();
+        ~SEntity();
     };
 }

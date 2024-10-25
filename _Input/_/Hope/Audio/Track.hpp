@@ -1,23 +1,18 @@
 #pragma once
 
-namespace NHope::NAudio::NTrack
+namespace NHope::NAudio
 {
     struct STrack
     {
         std::string FPath;
         Mix_Music* FHandle;
 
-        STrack(const std::string& APath);
-        std::string const& IPath();
-        Mix_Music* const& IHandle();
-        STrack* IPath(std::string const& AValue);
-        STrack* IHandle(Mix_Music* const& AValue);
-        bool IIs(const std::string& APath);
-        STrack* IPlay();
-        STrack* IPause();
-        STrack* IResume();
-        STrack* IStop();
-        STrack* IAccessVolume(std::uint8_t AValue);
+        STrack(std::string const& APath);
+        void IPlay();
+        void IPause();
+        void IResume();
+        void IStop();
+        void IVolume(std::uint8_t const& ALevel);
         ~STrack();
     };
 }

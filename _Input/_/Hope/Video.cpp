@@ -3,35 +3,35 @@
 #include"Video/Font.hpp"
 #include"Video/Image.hpp"
 
-namespace NHope::NVideo
+namespace NHope
 {
     SVideo::SVideo()
     {
-        NDebug::GDebug.ISimpleDirectMediaLayerHandleError(FWindow = SDL_CreateWindow("Hope" , 0 , 0 , 0 , 0 , SDL_WINDOW_FULLSCREEN_DESKTOP));
-        NDebug::GDebug.ISimpleDirectMediaLayerHandleError(FRenderer = SDL_CreateRenderer(FWindow , -1 , SDL_RENDERER_ACCELERATED));
+        GDebug.ISimpleDirectMediaLayerHandleError(FWindow = SDL_CreateWindow("Hope" , 0 , 0 , 0 , 0 , SDL_WINDOW_FULLSCREEN_DESKTOP));
+        GDebug.ISimpleDirectMediaLayerHandleError(FRenderer = SDL_CreateRenderer(FWindow , -1 , SDL_RENDERER_ACCELERATED));
         SDL_DisplayMode LDisplayMode;
-        NDebug::GDebug.ISimpleDirectMediaLayerCodeError(SDL_GetWindowDisplayMode(FWindow , &LDisplayMode));
+        GDebug.ISimpleDirectMediaLayerCodeError(SDL_GetWindowDisplayMode(FWindow , &LDisplayMode));
         FWidth = LDisplayMode.w;
         FHeight = LDisplayMode.h;
         FMinimum = std::min(FWidth , FHeight);
         FMaximum = std::max(FWidth , FHeight);
         FRatio = static_cast<double>(FWidth) / static_cast<double>(FHeight);
         FRatioInversed = static_cast<double>(FHeight) / static_cast<double>(FWidth);
-        NDebug::GDebug.ISimpleDirectMediaLayerCodeError(TTF_Init());
+        GDebug.ISimpleDirectMediaLayerCodeError(TTF_Init());
         for(const std::filesystem::directory_entry& LEntry : std::filesystem::recursive_directory_iterator{"Fonts"})
         {
             if(LEntry.path().extension() == ".ttf")
             {
-                FFonts.emplace_back(std::make_shared<NFont::SFont>(LEntry.path().generic_string()));
+                FFonts.emplace_back(std::make_shared<NVideo::SFont>(LEntry.path().generic_string()));
             }
         }
         FFonts.shrink_to_fit();
-        NDebug::GDebug.ISimpleDirectMediaLayerMaskError(IMG_Init(IMG_INIT_PNG));
+        GDebug.ISimpleDirectMediaLayerMaskError(IMG_Init(IMG_INIT_PNG));
         for(const std::filesystem::directory_entry& LEntry : std::filesystem::recursive_directory_iterator{"Images"})
         {
             if(LEntry.path().extension() == ".png")
             {
-                FImages.emplace_back(std::make_shared<NImage::SImage>(LEntry.path().generic_string()));
+                FImages.emplace_back(std::make_shared<NVideo::SImage>(LEntry.path().generic_string()));
             }
         }
         FImages.shrink_to_fit();
@@ -82,12 +82,12 @@ namespace NHope::NVideo
         return(FRatioInversed);
     }
 
-    std::vector<std::shared_ptr<NFont::SFont>> const& SVideo::IFonts()
+    std::vector<std::shared_ptr<NVideo::SFont>> const& SVideo::IFonts()
     {
         return(FFonts);
     }
 
-    std::vector<std::shared_ptr<NImage::SImage>> const& SVideo::IImages()
+    std::vector<std::shared_ptr<NVideo::SImage>> const& SVideo::IImages()
     {
         return(FImages);
     }
@@ -132,35 +132,35 @@ namespace NHope::NVideo
         FRatioInversed = AValue;
     }
 
-    void SVideo::IFonts(std::vector<std::shared_ptr<NFont::SFont>> const& AValue)
+    void SVideo::IFonts(std::vector<std::shared_ptr<NVideo::SFont>> const& AValue)
     {
         FFonts = AValue;
     }
 
-    void SVideo::IImages(std::vector<std::shared_ptr<NImage::SImage>> const& AValue)
+    void SVideo::IImages(std::vector<std::shared_ptr<NVideo::SImage>> const& AValue)
     {
         FImages = AValue;
     }
 
-    NFont::SFont* SVideo::IAccessFont(const std::string& APath)
+    NVideo::SFont* SVideo::IAccessFont(const std::string& APath)
     {
-        std::vector<std::shared_ptr<NFont::SFont>>::iterator LIterator
+        std::vector<std::shared_ptr<NVideo::SFont>>::iterator LIterator
         {
-            std::find_if(FFonts.begin() , FFonts.end() , [&](std::shared_ptr<NFont::SFont>& LFont){return(LFont->IIs(APath));})
+            std::find_if(FFonts.begin() , FFonts.end() , [&](std::shared_ptr<NVideo::SFont>& LFont){return(LFont->FPath == APath);})
         };
         return(LIterator->get());
     }
 
-    NImage::SImage* SVideo::IAccessImageSpecific(const std::string& APath)
+    NVideo::SImage* SVideo::IAccessImageSpecific(const std::string& APath)
     {
-        std::vector<std::shared_ptr<NImage::SImage>>::iterator LIterator
+        std::vector<std::shared_ptr<NVideo::SImage>>::iterator LIterator
         {
-            std::find_if(FImages.begin() , FImages.end() , [&](std::shared_ptr<NImage::SImage>& LImage){return(LImage->IIs(APath));})
+            std::find_if(FImages.begin() , FImages.end() , [&](std::shared_ptr<NVideo::SImage>& LImage){return(LImage->FPath == APath);})
         };
         return(LIterator->get());
     }
 
-    NImage::SImage* SVideo::IAccessImageRandom()
+    NVideo::SImage* SVideo::IAccessImageRandom()
     {
         std::random_device LGenerator;
         std::uniform_int_distribution<std::uintmax_t> LDistributor{0 , FImages.size() - 1};

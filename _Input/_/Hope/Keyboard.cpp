@@ -1,104 +1,233 @@
 #include"Hope.hpp"
 
-namespace NHope::NKeyboard
+#include"Keyboard/Key.hpp"
+
+namespace NHope
 {
     SKeyboard::SKeyboard()
     {
-        FKeys = 512;
-        FAreKeysHeld.resize(FKeys);
-        FAreKeysPressed.resize(FKeys);
-        FAreKeysReleased.resize(FKeys);
-        for(std::int64_t LKey{0} ; LKey < FKeys ; LKey++)
+        for
+        (
+            auto const& [LInteger , LString] : std::initializer_list<std::pair<std::int64_t , std::string>>
+            {
+                {SDL_SCANCODE_ESCAPE , "Escape"}
+                ,
+                {SDL_SCANCODE_F1 , "F1"}
+                ,
+                {SDL_SCANCODE_F2 , "F2"}
+                ,
+                {SDL_SCANCODE_F3 , "F3"}
+                ,
+                {SDL_SCANCODE_F4 , "F4"}
+                ,
+                {SDL_SCANCODE_F5 , "F5"}
+                ,
+                {SDL_SCANCODE_F6 , "F6"}
+                ,
+                {SDL_SCANCODE_F7 , "F7"}
+                ,
+                {SDL_SCANCODE_F8 , "F8"}
+                ,
+                {SDL_SCANCODE_F9 , "F9"}
+                ,
+                {SDL_SCANCODE_F10 , "F10"}
+                ,
+                {SDL_SCANCODE_F11 , "F11"}
+                ,
+                {SDL_SCANCODE_F12 , "F12"}
+                ,
+                {SDL_SCANCODE_PRINTSCREEN , "PrintScreen"}
+                ,
+                {SDL_SCANCODE_SCROLLLOCK , "ScrollLock"}
+                ,
+                {SDL_SCANCODE_PAUSE , "Pause"}
+                ,
+                {SDL_SCANCODE_GRAVE , "Grave"}
+                ,
+                {SDL_SCANCODE_1 , "1"}
+                ,
+                {SDL_SCANCODE_2 , "2"}
+                ,
+                {SDL_SCANCODE_3 , "3"}
+                ,
+                {SDL_SCANCODE_4 , "4"}
+                ,
+                {SDL_SCANCODE_5 , "5"}
+                ,
+                {SDL_SCANCODE_6 , "6"}
+                ,
+                {SDL_SCANCODE_7 , "7"}
+                ,
+                {SDL_SCANCODE_8 , "8"}
+                ,
+                {SDL_SCANCODE_9 , "9"}
+                ,
+                {SDL_SCANCODE_0 , "0"}
+                ,
+                {SDL_SCANCODE_MINUS , "Minus"}
+                ,
+                {SDL_SCANCODE_EQUALS , "Equals"}
+                ,
+                {SDL_SCANCODE_BACKSPACE , "Backspace"}
+                ,
+                {SDL_SCANCODE_TAB , "Tab"}
+                ,
+                {SDL_SCANCODE_Q , "Q"}
+                ,
+                {SDL_SCANCODE_W , "W"}
+                ,
+                {SDL_SCANCODE_E , "E"}
+                ,
+                {SDL_SCANCODE_R , "R"}
+                ,
+                {SDL_SCANCODE_T , "T"}
+                ,
+                {SDL_SCANCODE_Y , "Y"}
+                ,
+                {SDL_SCANCODE_U , "U"}
+                ,
+                {SDL_SCANCODE_I , "I"}
+                ,
+                {SDL_SCANCODE_O , "O"}
+                ,
+                {SDL_SCANCODE_P , "P"}
+                ,
+                {SDL_SCANCODE_LEFTBRACKET , "LeftBracket"}
+                ,
+                {SDL_SCANCODE_RIGHTBRACKET , "RightBracket"}
+                ,
+                {SDL_SCANCODE_RETURN , "Return"}
+                ,
+                {SDL_SCANCODE_CAPSLOCK , "CapsLock"}
+                ,
+                {SDL_SCANCODE_A , "A"}
+                ,
+                {SDL_SCANCODE_S , "S"}
+                ,
+                {SDL_SCANCODE_D , "D"}
+                ,
+                {SDL_SCANCODE_F , "F"}
+                ,
+                {SDL_SCANCODE_G , "G"}
+                ,
+                {SDL_SCANCODE_H , "H"}
+                ,
+                {SDL_SCANCODE_J , "J"}
+                ,
+                {SDL_SCANCODE_K , "K"}
+                ,
+                {SDL_SCANCODE_L , "L"}
+                ,
+                {SDL_SCANCODE_SEMICOLON , "Semicolon"}
+                ,
+                {SDL_SCANCODE_APOSTROPHE , "Apostrophe"}
+                ,
+                {SDL_SCANCODE_LSHIFT , "LShift"}
+                ,
+                {SDL_SCANCODE_Z , "Z"}
+                ,
+                {SDL_SCANCODE_X , "X"}
+                ,
+                {SDL_SCANCODE_C , "C"}
+                ,
+                {SDL_SCANCODE_V , "V"}
+                ,
+                {SDL_SCANCODE_B , "B"}
+                ,
+                {SDL_SCANCODE_N , "N"}
+                ,
+                {SDL_SCANCODE_M , "M"}
+                ,
+                {SDL_SCANCODE_COMMA , "Comma"}
+                ,
+                {SDL_SCANCODE_PERIOD , "Period"}
+                ,
+                {SDL_SCANCODE_SLASH , "Slash"}
+                ,
+                {SDL_SCANCODE_BACKSLASH , "Backslash"}
+                ,
+                {SDL_SCANCODE_RSHIFT , "RShift"}
+                ,
+                {SDL_SCANCODE_LCTRL , "LCtrl"}
+                ,
+                {SDL_SCANCODE_LGUI , "LGUI"}
+                ,
+                {SDL_SCANCODE_LALT , "LAlt"}
+                ,
+                {SDL_SCANCODE_SPACE , "Space"}
+                ,
+                {SDL_SCANCODE_RALT , "RAlt"}
+                ,
+                {SDL_SCANCODE_RGUI , "RGUI"}
+                ,
+                {SDL_SCANCODE_APPLICATION , "Application"}
+                ,
+                {SDL_SCANCODE_RCTRL , "RCtrl"}
+                ,
+                {SDL_SCANCODE_INSERT , "Insert"}
+                ,
+                {SDL_SCANCODE_HOME , "Home"}
+                ,
+                {SDL_SCANCODE_PAGEUP , "PageUp"}
+                ,
+                {SDL_SCANCODE_DELETE , "Delete"}
+                ,
+                {SDL_SCANCODE_END , "End"}
+                ,
+                {SDL_SCANCODE_PAGEDOWN , "PageDown"}
+                ,
+                {SDL_SCANCODE_NUMLOCKCLEAR , "NumLockClear"}
+                ,
+                {SDL_SCANCODE_KP_DIVIDE , "KPDivide"}
+                ,
+                {SDL_SCANCODE_KP_MULTIPLY , "KPMultiply"}
+                ,
+                {SDL_SCANCODE_KP_MINUS , "KPMinus"}
+                ,
+                {SDL_SCANCODE_KP_7 , "KP7"}
+                ,
+                {SDL_SCANCODE_KP_8 , "KP8"}
+                ,
+                {SDL_SCANCODE_KP_9 , "KP9"}
+                ,
+                {SDL_SCANCODE_KP_PLUS , "KPPlus"}
+                ,
+                {SDL_SCANCODE_KP_4 , "KP4"}
+                ,
+                {SDL_SCANCODE_KP_5 , "KP5"}
+                ,
+                {SDL_SCANCODE_KP_7 , "KP6"}
+                ,
+                {SDL_SCANCODE_KP_1 , "KP1"}
+                ,
+                {SDL_SCANCODE_KP_2 , "KP2"}
+                ,
+                {SDL_SCANCODE_KP_3 , "KP3"}
+                ,
+                {SDL_SCANCODE_KP_ENTER , "KPEnter"}
+                ,
+                {SDL_SCANCODE_KP_0 , "KP0"}
+                ,
+                {SDL_SCANCODE_KP_PERIOD , "KPPeriod"}
+            }
+        )
         {
-            FAreKeysHeld[LKey] = false;
-            FAreKeysPressed[LKey] = false;
-            FAreKeysReleased[LKey] = false;
+            FKeys[LString] = std::make_shared<NKeyboard::SKey>();
+            FKeysAdaptors[LInteger] = LString;
         }
     }
 
     void SKeyboard::IPreupdate()
     {
-        for(std::int64_t LKey{0} ; LKey < FKeys ; LKey++)
+        for(auto const& [LName , LKey] : FKeys)
         {
-            FAreKeysPressed[LKey] = false;
-            FAreKeysReleased[LKey] = false;
+            LKey->IPreupdate();
         }
     }
 
-    std::int64_t const& SKeyboard::IKeys()
+    void SKeyboard::IPostupdate(SDL_Event const& AEvent)
     {
-        return(FKeys);
-    }
-
-    std::vector<bool> const& SKeyboard::IAreKeysHeld()
-    {
-        return(FAreKeysHeld);
-    }
-
-    std::vector<bool> const& SKeyboard::IAreKeysPressed()
-    {
-        return(FAreKeysPressed);
-    }
-
-    std::vector<bool> const& SKeyboard::IAreKeysReleased()
-    {
-        return(FAreKeysReleased);
-    }
-
-    void SKeyboard::IKeys(std::int64_t const& AValue)
-    {
-        FKeys = AValue;
-    }
-
-    void SKeyboard::IAreKeysHeld(std::vector<bool> const& AValue)
-    {
-        FAreKeysHeld = AValue;
-    }
-
-    void SKeyboard::IAreKeysPressed(std::vector<bool> const& AValue)
-    {
-        FAreKeysPressed = AValue;
-    }
-
-    void SKeyboard::IAreKeysReleased(std::vector<bool> const& AValue)
-    {
-        FAreKeysReleased = AValue;
-    }
-
-    bool SKeyboard::IIsKeyHeld(std::int64_t AKey)
-    {
-        return(FAreKeysHeld[AKey]);
-    }
-
-    bool SKeyboard::IIsKeyPressed(std::int64_t AKey)
-    {
-        return(FAreKeysPressed[AKey]);
-    }
-
-    bool SKeyboard::IIsKeyReleased(std::int64_t AKey)
-    {
-        return(FAreKeysReleased[AKey]);
-    }
-
-    void SKeyboard::IPostupdate(SDL_Event& AEvent)
-    {
-        switch(AEvent.type)
-        {
-            case(SDL_KEYDOWN):
-                FAreKeysHeld[AEvent.key.keysym.scancode] = true;
-                if(!AEvent.key.repeat)
-                {
-                    FAreKeysPressed[AEvent.key.keysym.scancode] = true;
-                }
-            break;
-            case(SDL_KEYUP):
-                FAreKeysHeld[AEvent.key.keysym.scancode] = false;
-                if(!AEvent.key.repeat)
-                {
-                    FAreKeysReleased[AEvent.key.keysym.scancode] = true;
-                }
-            break;
-        }
+        FKeys[FKeysAdaptors[AEvent.button.button]]->IPostupdate(AEvent);
     }
 
     SKeyboard::~SKeyboard()
