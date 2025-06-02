@@ -1,3 +1,1 @@
-Dwarf
-Elf
-Wall
+Entity

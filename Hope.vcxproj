@@ -19,56 +19,60 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="_Input\_\Hope.hpp" />
-    <ClInclude Include="_Input\_\Hope\Audio.hpp" />
-    <ClInclude Include="_Input\_\Hope\Audio\Sound.hpp" />
-    <ClInclude Include="_Input\_\Hope\Audio\Track.hpp" />
-    <ClInclude Include="_Input\_\Hope\Debug.hpp" />
-    <ClInclude Include="_Input\_\Hope\Interface.hpp" />
-    <ClInclude Include="_Input\_\Hope\Keyboard.hpp" />
-    <ClInclude Include="_Input\_\Hope\Keyboard\Key.hpp" />
-    <ClInclude Include="_Input\_\Hope\Mouse.hpp" />
-    <ClInclude Include="_Input\_\Hope\Mouse\Absolute.hpp" />
-    <ClInclude Include="_Input\_\Hope\Mouse\Button.hpp" />
-    <ClInclude Include="_Input\_\Hope\Mouse\Pixel.hpp" />
-    <ClInclude Include="_Input\_\Hope\Mouse\Cursor.hpp" />
-    <ClInclude Include="_Input\_\Hope\Mouse\Rectangle.hpp" />
-    <ClInclude Include="_Input\_\Hope\Mouse\Relative.hpp" />
-    <ClInclude Include="_Input\_\Hope\Mouse\Square.hpp" />
-    <ClInclude Include="_Input\_\Hope\Mouse\Wheel.hpp" />
-    <ClInclude Include="_Input\_\Hope\Space.hpp" />
-    <ClInclude Include="_Input\_\Hope\Space\Entity.hpp" />
-    <ClInclude Include="_Input\_\Hope\Time.hpp" />
-    <ClInclude Include="_Input\_\Hope\Video.hpp" />
-    <ClInclude Include="_Input\_\Hope\Video\Font.hpp" />
-    <ClInclude Include="_Input\_\Hope\Video\Image.hpp" />
-    <ClInclude Include="_Input\_\Hope\Video\Sprite.hpp" />
+    <ClInclude Include="_Input\_\Hope.hxx" />
+    <ClInclude Include="_Input\_\Hope\Audio.hxx" />
+    <ClInclude Include="_Input\_\Hope\Audio\Sound.hxx" />
+    <ClInclude Include="_Input\_\Hope\Audio\Track.hxx" />
+    <ClInclude Include="_Input\_\Hope\Debug.hxx" />
+    <ClInclude Include="_Input\_\Hope\Interface.hxx" />
+    <ClInclude Include="_Input\_\Hope\Keyboard.hxx" />
+    <ClInclude Include="_Input\_\Hope\Keyboard\Key.hxx" />
+    <ClInclude Include="_Input\_\Hope\Mouse.hxx" />
+    <ClInclude Include="_Input\_\Hope\Mouse\Absolute.hxx" />
+    <ClInclude Include="_Input\_\Hope\Mouse\Button.hxx" />
+    <ClInclude Include="_Input\_\Hope\Mouse\Cursor.hxx" />
+    <ClInclude Include="_Input\_\Hope\Mouse\Pixel.hxx" />
+    <ClInclude Include="_Input\_\Hope\Mouse\Rectangle.hxx" />
+    <ClInclude Include="_Input\_\Hope\Mouse\Relative.hxx" />
+    <ClInclude Include="_Input\_\Hope\Mouse\Square.hxx" />
+    <ClInclude Include="_Input\_\Hope\Mouse\Wheel.hxx" />
+    <ClInclude Include="_Input\_\Hope\Space.hxx" />
+    <ClInclude Include="_Input\_\Hope\Space\Entity.hxx" />
+    <ClInclude Include="_Input\_\Hope\Space\Image.hxx" />
+    <ClInclude Include="_Input\_\Hope\Space\Partition.hxx" />
+    <ClInclude Include="_Input\_\Hope\Space\Terrain.hxx" />
+    <ClInclude Include="_Input\_\Hope\Time.hxx" />
+    <ClInclude Include="_Input\_\Hope\Video.hxx" />
+    <ClInclude Include="_Input\_\Hope\Video\Font.hxx" />
+    <ClInclude Include="_Input\_\Hope\Video\Image.hxx" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="_Input\_\Hope.cpp" />
-    <ClCompile Include="_Input\_\Hope\Audio.cpp" />
-    <ClCompile Include="_Input\_\Hope\Audio\Sound.cpp" />
-    <ClCompile Include="_Input\_\Hope\Audio\Track.cpp" />
-    <ClCompile Include="_Input\_\Hope\Debug.cpp" />
-    <ClCompile Include="_Input\_\Hope\Interface.cpp" />
-    <ClCompile Include="_Input\_\Hope\Keyboard.cpp" />
-    <ClCompile Include="_Input\_\Hope\Keyboard\Key.cpp" />
-    <ClCompile Include="_Input\_\Hope\Mouse.cpp" />
-    <ClCompile Include="_Input\_\Hope\Mouse\Absolute.cpp" />
-    <ClCompile Include="_Input\_\Hope\Mouse\Button.cpp" />
-    <ClCompile Include="_Input\_\Hope\Mouse\Pixel.cpp" />
-    <ClCompile Include="_Input\_\Hope\Mouse\Cursor.cpp" />
-    <ClCompile Include="_Input\_\Hope\Mouse\Rectangle.cpp" />
-    <ClCompile Include="_Input\_\Hope\Mouse\Relative.cpp" />
-    <ClCompile Include="_Input\_\Hope\Mouse\Square.cpp" />
-    <ClCompile Include="_Input\_\Hope\Mouse\Wheel.cpp" />
-    <ClCompile Include="_Input\_\Hope\Space.cpp" />
-    <ClCompile Include="_Input\_\Hope\Space\Entity.cpp" />
-    <ClCompile Include="_Input\_\Hope\Time.cpp" />
-    <ClCompile Include="_Input\_\Hope\Video.cpp" />
-    <ClCompile Include="_Input\_\Hope\Video\Font.cpp" />
-    <ClCompile Include="_Input\_\Hope\Video\Image.cpp" />
-    <ClCompile Include="_Input\_\Hope\Video\Sprite.cpp" />
+    <ClCompile Include="_Input\_\Hope.cxx" />
+    <ClCompile Include="_Input\_\Hope\Audio.cxx" />
+    <ClCompile Include="_Input\_\Hope\Audio\Sound.cxx" />
+    <ClCompile Include="_Input\_\Hope\Audio\Track.cxx" />
+    <ClCompile Include="_Input\_\Hope\Debug.cxx" />
+    <ClCompile Include="_Input\_\Hope\Interface.cxx" />
+    <ClCompile Include="_Input\_\Hope\Keyboard.cxx" />
+    <ClCompile Include="_Input\_\Hope\Keyboard\Key.cxx" />
+    <ClCompile Include="_Input\_\Hope\Mouse.cxx" />
+    <ClCompile Include="_Input\_\Hope\Mouse\Absolute.cxx" />
+    <ClCompile Include="_Input\_\Hope\Mouse\Button.cxx" />
+    <ClCompile Include="_Input\_\Hope\Mouse\Cursor.cxx" />
+    <ClCompile Include="_Input\_\Hope\Mouse\Pixel.cxx" />
+    <ClCompile Include="_Input\_\Hope\Mouse\Rectangle.cxx" />
+    <ClCompile Include="_Input\_\Hope\Mouse\Relative.cxx" />
+    <ClCompile Include="_Input\_\Hope\Mouse\Square.cxx" />
+    <ClCompile Include="_Input\_\Hope\Mouse\Wheel.cxx" />
+    <ClCompile Include="_Input\_\Hope\Space.cxx" />
+    <ClCompile Include="_Input\_\Hope\Space\Entity.cxx" />
+    <ClCompile Include="_Input\_\Hope\Space\Image.cxx" />
+    <ClCompile Include="_Input\_\Hope\Space\Partition.cxx" />
+    <ClCompile Include="_Input\_\Hope\Space\Terrain.cxx" />
+    <ClCompile Include="_Input\_\Hope\Time.cxx" />
+    <ClCompile Include="_Input\_\Hope\Video.cxx" />
+    <ClCompile Include="_Input\_\Hope\Video\Font.cxx" />
+    <ClCompile Include="_Input\_\Hope\Video\Image.cxx" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -153,6 +157,7 @@
       <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
       <XMLDocumentationFileName>$(IntDir)</XMLDocumentationFileName>
       <SourceDependenciesFile>$(IntDir)</SourceDependenciesFile>
+      <BuildStlModules>false</BuildStlModules>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -177,6 +182,7 @@
       <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
       <XMLDocumentationFileName>$(IntDir)</XMLDocumentationFileName>
       <SourceDependenciesFile>$(IntDir)</SourceDependenciesFile>
+      <BuildStlModules>false</BuildStlModules>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -201,6 +207,7 @@
       <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
       <XMLDocumentationFileName>$(IntDir)</XMLDocumentationFileName>
       <SourceDependenciesFile>$(IntDir)</SourceDependenciesFile>
+      <BuildStlModules>false</BuildStlModules>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -225,6 +232,7 @@
       <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
       <XMLDocumentationFileName>$(IntDir)</XMLDocumentationFileName>
       <SourceDependenciesFile>$(IntDir)</SourceDependenciesFile>
+      <BuildStlModules>false</BuildStlModules>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
